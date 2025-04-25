@@ -23,3 +23,8 @@ class Player(PlayerBase, table=True):
     id: int = Field(default=None, primary_key=True)
 
     events: list[Event] = Relationship(back_populates="player")
+
+
+class PlayerRead(PlayerBase):
+    id: int
+    events: list[Event] = []
