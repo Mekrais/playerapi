@@ -15,7 +15,7 @@ def get_players(session: Session = Depends(get_session)):
     return crud.get_players(session)
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=Player, status_code=status.HTTP_201_CREATED)
 def create_player(name: str, session: Session = Depends(get_session)):
     return crud.create_player(session, name)
 
@@ -34,7 +34,7 @@ def get_player_events(
     return crud.get_player_events(session, player_id, type)
 
 
-@router.post("/{player_id}/events", status_code=status.HTTP_201_CREATED)
+@router.post("/{player_id}/events", response_model=Event, status_code=status.HTTP_201_CREATED)
 def create_player_event(
     player_id: int,
     type: str,
