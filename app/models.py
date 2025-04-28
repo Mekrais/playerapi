@@ -7,6 +7,10 @@ class EventBase(SQLModel):
     detail: str
 
 
+class EventCreate(EventBase):
+    pass
+
+
 class Event(EventBase, table=True):
     id: int = Field(default=None, primary_key=True)
     timestamp: datetime = Field(default_factory=datetime.now)
@@ -17,6 +21,10 @@ class Event(EventBase, table=True):
 
 class PlayerBase(SQLModel):
     name: str
+
+
+class PlayerCreate(PlayerBase):
+    pass
 
 
 class Player(PlayerBase, table=True):
